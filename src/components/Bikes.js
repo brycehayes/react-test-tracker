@@ -7,7 +7,7 @@ const Bikes = (props) => {
     return (
         <div>
             {props.bikes.map((bike) => (
-                <Bike key={bike.id} bike={bike} onDelete={props.onDelete}></Bike>
+                <Bike key={bike.id} bike={bike} onDelete={props.onDelete} onToggle={props.onToggle}></Bike>
             ))}   
         </div>
     )

@@ -7,6 +7,7 @@ import FrenchCities from './components/FrenchCities';
 
 import { useState, useEffect } from'react';
 import AddTask from './components/AddTask';
+import AddBicycle from './components/AddBicycle';
 
 
 function App() {
@@ -175,22 +176,32 @@ const toggleReminder = (id) => {
     setTasks ( tasks.map( (task) => task.id === id ? {...task, reminder: !task.reminder} : task));
 }
 
+
+
+
 //Toggle Available
 const toggleAvailable = (id) => {
-    console.log("The id of bike is: ", id);
+    console.log("The id of the task is: ", id);
+    setBikes ( bikes.map( ( bike) => bike.id === id ? {...bike, available: !bike.available} : bike));
+    //console.log("The id of bike is: ", id);
 }
 
-const toggleRed = (id) => {
+
+
+
+
+const toggleSampled = (id) => {
     console.log(id);
 }
 
   return (
     <div className="container">
       <Header title='Task Tracker' onAdd={() => setShowAddTask(!showAddTask)} showAddTask={showAddTask}/>
-      {showAddTask ? <AddTask onAdd={addTask}/> : <div/>}
+      <AddBicycle></AddBicycle>
+      {/* {showAddTask ? <AddTask onAdd={addTask}/> : <div/>} */}
       {tasks.length > 0 ? <Tasks tasks ={tasks} onDelete={deleteTask} onToggle={toggleReminder}/> : <h2>No Tasks left</h2>} 
       {/* <Books books={books}></Books> */}
-      <Bikes bikes={bikes} onDelete={deleteBike} onToggle={toggleReminder}></Bikes>
+      <Bikes bikes={bikes} onDelete={deleteBike} onToggle={toggleAvailable}></Bikes>
       {/* <FrenchCities cities={cities} onDelete={deleteCity} onToggle={toggleRed}></FrenchCities> */}
       {/* <Wines wines={wines} onDelete={deleteWine}/> */}
     </div>
